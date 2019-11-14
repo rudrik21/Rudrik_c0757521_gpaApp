@@ -16,6 +16,7 @@
 		9BDF8DC4237DE50500C3F543 /* RegisterStudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DC3237DE50500C3F543 /* RegisterStudentVC.swift */; };
 		9BDF8DC6237DE8E300C3F543 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DC5237DE8E300C3F543 /* Student.swift */; };
 		9BDF8DC8237DF21400C3F543 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DC7237DF21400C3F543 /* utils.swift */; };
+		9BDF8DCA237E05DA00C3F543 /* GPACalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DC9237E05DA00C3F543 /* GPACalculatorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9BDF8DC3237DE50500C3F543 /* RegisterStudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStudentVC.swift; sourceTree = "<group>"; };
 		9BDF8DC5237DE8E300C3F543 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		9BDF8DC7237DF21400C3F543 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		9BDF8DC9237E05DA00C3F543 /* GPACalculatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPACalculatorVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				9BDF8DC1237DDFD000C3F543 /* StudentsTVC.swift */,
 				9BDF8DC3237DE50500C3F543 /* RegisterStudentVC.swift */,
+				9BDF8DC9237E05DA00C3F543 /* GPACalculatorVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BDF8DAC237DDEF600C3F543 /* AppDelegate.swift in Sources */,
+				9BDF8DCA237E05DA00C3F543 /* GPACalculatorVC.swift in Sources */,
 				9BDF8DAE237DDEF600C3F543 /* SceneDelegate.swift in Sources */,
 				9BDF8DC2237DDFD000C3F543 /* StudentsTVC.swift in Sources */,
 				9BDF8DC8237DF21400C3F543 /* utils.swift in Sources */,

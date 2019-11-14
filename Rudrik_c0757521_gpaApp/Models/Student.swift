@@ -13,7 +13,7 @@ struct Student{
     var lastName : String 
     var studentID : String
     
-    static var students: [Student] = []
+    static var students: [Student] = [Student(firstName: "Rudrik", lastName: "Panchal", studentID: "123")]
     
     static func shouldAdd(studentID: String) -> Bool {
         //  returns true if 'not empty'
