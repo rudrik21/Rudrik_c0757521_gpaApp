@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83620350237F307300531C2C /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362034F237F307300531C2C /* Semester.swift */; };
+		83620352237F317F00531C2C /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83620351237F317F00531C2C /* Course.swift */; };
 		9BDF8DAC237DDEF600C3F543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DAB237DDEF600C3F543 /* AppDelegate.swift */; };
 		9BDF8DAE237DDEF600C3F543 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDF8DAD237DDEF600C3F543 /* SceneDelegate.swift */; };
 		9BDF8DB3237DDEF600C3F543 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BDF8DB1237DDEF600C3F543 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8362034F237F307300531C2C /* Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
+		83620351237F317F00531C2C /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		9BDF8DA8237DDEF600C3F543 /* Rudrik_c0757521_gpaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rudrik_c0757521_gpaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDF8DAB237DDEF600C3F543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BDF8DAD237DDEF600C3F543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				9BDF8DC5237DE8E300C3F543 /* Student.swift */,
+				8362034F237F307300531C2C /* Semester.swift */,
+				83620351237F317F00531C2C /* Course.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,7 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83620352237F317F00531C2C /* Course.swift in Sources */,
 				9BDF8DAC237DDEF600C3F543 /* AppDelegate.swift in Sources */,
+				83620350237F307300531C2C /* Semester.swift in Sources */,
 				9BDF8DCA237E05DA00C3F543 /* GPACalculatorVC.swift in Sources */,
 				9BDF8DAE237DDEF600C3F543 /* SceneDelegate.swift in Sources */,
 				9BDF8DC2237DDFD000C3F543 /* StudentsTVC.swift in Sources */,
@@ -322,6 +330,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "rudrik21.Rudrik-c0757521-gpaApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -339,6 +348,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "rudrik21.Rudrik-c0757521-gpaApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

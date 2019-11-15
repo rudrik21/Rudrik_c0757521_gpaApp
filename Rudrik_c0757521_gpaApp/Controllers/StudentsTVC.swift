@@ -26,6 +26,7 @@ class StudentsTVC: UITableViewController {
 
     func start() {
         searchBar.delegate = self
+        self.tableView.becomeFirstResponder()
     }
     
     func updateData() {
@@ -39,6 +40,10 @@ class StudentsTVC: UITableViewController {
             if let barBtnItem = sender as? UIBarButtonItem{
                 registerStudentVC.delegate = self
             }
+        }
+        
+        if let gpaCalculatorVC = segue.destination as? GPACalculatorVC {
+            gpaCalculatorVC.delegate = self
         }
     }
 }
@@ -57,7 +62,7 @@ extension StudentsTVC{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let student = Student.students[indexPath.row]
         cell.textLabel?.text = student.firstName
-        cell.detailTextLabel?.text = student.studentID
+        cell.detailTextLabel?.text = String(student.CGPA)
 
         return cell
     }
