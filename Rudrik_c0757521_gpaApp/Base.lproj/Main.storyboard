@@ -206,7 +206,7 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="onSemeChange:" destination="2iT-Ro-RX2" eventType="valueChanged" id="WUN-gP-SU6"/>
+                                    <action selector="onSemChange:" destination="2iT-Ro-RX2" eventType="valueChanged" id="WUN-gP-SU6"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XaI-nJ-oQ1">

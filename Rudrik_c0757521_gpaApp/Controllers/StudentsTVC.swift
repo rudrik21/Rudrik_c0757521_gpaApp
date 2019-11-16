@@ -11,6 +11,9 @@ import UIKit
 class StudentsTVC: UITableViewController {
 
     
+    //  MARK: VARIABLES
+    var students: [Student] = []
+    
     //  MARK: OUTLETS
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -25,25 +28,38 @@ class StudentsTVC: UITableViewController {
     }
 
     func start() {
+        students = Student.students
         searchBar.delegate = self
         self.tableView.becomeFirstResponder()
+        
+        updateData()
     }
     
     func updateData() {
+        students = Student.students
         self.tableView.reloadData()
+        students.forEach { (s) in
+            print(s)
+        }
     }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let registerStudentVC = segue.destination as? RegisterStudentVC{
-            if let barBtnItem = sender as? UIBarButtonItem{
+            if let _ = sender as? UIBarButtonItem{
                 registerStudentVC.delegate = self
             }
         }
         
         if let gpaCalculatorVC = segue.destination as? GPACalculatorVC {
             gpaCalculatorVC.delegate = self
+            if let cell = sender as? UITableViewCell{
+                gpaCalculatorVC.student = Student.students.filter({ (s) -> Bool in
+                    s.firstName == cell.textLabel!.text!
+                    }).first
+            }
         }
     }
 }
@@ -54,15 +70,15 @@ extension StudentsTVC{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Student.students.count
+        return students.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let student = Student.students[indexPath.row]
+        let student = students[indexPath.row]
         cell.textLabel?.text = student.firstName
-        cell.detailTextLabel?.text = String(student.CGPA)
+        cell.detailTextLabel?.text = String(student.CGPA!)
 
         return cell
     }
@@ -109,7 +125,13 @@ extension StudentsTVC{
 extension StudentsTVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty{
-            print(searchText)
+            students = Student.students.filter({ (s) -> Bool in
+                s.firstName.lowercased().hasPrefix(searchText.lowercased())
+            })
+            tableView.reloadData()
+        }else{
+            students = Student.students
         }
+        tableView.reloadData()
     }
 }

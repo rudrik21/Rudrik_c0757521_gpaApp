@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GPACalculatorVC: UIViewController {
 
     
     //  MARK: Variables
     var delegate: StudentsTVC?
+    var student: Student?
+    var semester: Semester?
+    var audio : AVAudioPlayer!
     
     //  MARK: Outlets
     
@@ -25,22 +29,94 @@ class GPACalculatorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        start()
     }
     
     func start() {
-        
+        segSems.selectedSegmentIndex = 0
+        onSemChange(segSems)
     }
-    @IBAction func onSemeChange(_ sender: UISegmentedControl) {
+    
+    @IBAction func onSemChange(_ sender: UISegmentedControl) {
+//        print(sender.selectedSegmentIndex)
+        if audio != nil{
+            audio.stop()
+        }
         
+        txtCourses[0].becomeFirstResponder()
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            //  sem 1
+            sender.selectedSegmentIndex = 0
+            self.semester = (Student.students[student!.index].semesters![0])
+            loadData()
+            break
+        case 1:
+            //  sem 2
+            sender.selectedSegmentIndex = 1
+            self.semester = (Student.students[student!.index].semesters![1])
+            loadData()
+            break
+        case 2:
+            //  sem 3
+            sender.selectedSegmentIndex = 2
+            self.semester = (Student.students[student!.index].semesters![2])
+            loadData()
+            break
+        default:
+            return
+        }
+    }
+    
+    func loadData() {
+        setFields(courses: (semester!.courses!))
+    }
+    
+    func setFields(courses: [Course]) {
+        print(courses)
+        for (i, c) in courses.enumerated() {
+            lblCourses[i].text = c.cName
+            txtCourses[i].text = (c.cMarks <= 0 ? nil : String(c.cMarks))
+        }
+        lblGPA.text = (semester?.GPA == 0.0 ? "ex. 3/4" : String(semester!.GPA))
+    }
+    
+    func checkFields() -> Bool {
+        if !txtCourses.filter({ (txt) -> Bool in
+            txt.text!.isEmpty
+        }).isEmpty{
+            showMessage(vc: self, title: "Entered data might have empty values", msg: nil)
+        }else{
+             return true
+        }
+        return false
     }
     
     @IBAction func onCalculateGPA(_ sender: UIButton) {
+        if checkFields(){
+            setData()
+        }
+    }
+    
+    func setData() {
+        for i in 0..<txtCourses.count {
+            semester?.courses![i].cMarks = Int(String(txtCourses[i].text!))!
+        }
+        print("GPA: ",Float(semester!.GPA))
+        lblGPA.text = String(semester!.GPA)
         
+        if semester!.GPA > 2.8{
+            let soundURL = Bundle.main.url(forResource: "Win", withExtension: "wav")
+            audio = try! AVAudioPlayer(contentsOf: soundURL!)
+            audio.play()
+        }
+        
+        Student.students[student!.index].semesters![semester!.index] = semester!
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
+        delegate?.updateData()
     }
     
     /*
@@ -54,40 +130,4 @@ class GPACalculatorVC: UIViewController {
     */
 
 }
-
-
-
-/*
-
- func calculateGPA(marks: Int) -> Float {
-     switch marks {
-     case 94...100:
-         return 4.0
-     case 87...93:
-         return 3.7
-     case 80...86:
-         return 3.5
-     case 77...79:
-         return 3.2
-     case 73...76:
-         return 3.0
-     case 70...72:
-         return 2.7
-     case 67...69:
-         return 2.3
-     case 63...66:
-         return 2.0
-     case 60...62:
-         return 1.7
-     case 50...59:
-         return 1.0
-     case 0...49:
-         return 0.0
-     default:
-         break
-     }
-     return 0.0
- }
- 
- */
  

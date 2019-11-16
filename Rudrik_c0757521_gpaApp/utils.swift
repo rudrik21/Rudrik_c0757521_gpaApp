@@ -14,3 +14,19 @@ func findTextField(txts: [UITextField], identifier: String) -> UITextField? {
         t.accessibilityIdentifier == identifier
     }.first
 }
+
+func showMessage(vc: UIViewController, title: String, msg: String?) {
+    let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (act) in
+        alert.dismiss(animated: true, completion: nil)
+    }))
+    vc.present(alert, animated: true, completion: nil)
+}
+
+func showMessage(tvc: UITableViewController, title: String, msg: String?) {
+    let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (act) in
+        alert.dismiss(animated: true, completion: nil)
+    }))
+    tvc.present(alert, animated: true, completion: nil)
+}

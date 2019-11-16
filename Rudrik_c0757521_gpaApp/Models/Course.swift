@@ -9,42 +9,44 @@
 import Foundation
 
 struct Course {
-    var cName: String{
-        didSet{
-            self.credit = (self.cName.isEmpty ? 1 : Int(cName.dropFirst(self.cName.count - 1)))
-        }
+
+    var cName: String
+    var cMarks: Int
+    var credit: Int?
+    var gpa: Float{
+            switch cMarks {
+                case 94...100:
+                    return (4.0 * (Float(credit!)))
+                case 87...93:
+                    return (3.7 * (Float(credit!)))
+                case 80...86:
+                    return (3.5 * (Float(credit!)))
+                case 77...79:
+                    return (3.2 * (Float(credit!)))
+                case 73...76:
+                    return (3.0 * (Float(credit!)))
+                case 70...72:
+                    return (2.7 * (Float(credit!)))
+                case 67...69:
+                    return (2.3 * (Float(credit!)))
+                case 63...66:
+                    return (2.0 * (Float(credit!)))
+                case 60...62:
+                    return (1.7 * (Float(credit!)))
+                case 50...59:
+                    return (1.0 * (Float(credit!)))
+                case 0...49:
+                    return 0.0
+                default:
+                    return 0.0
+            }
     }
     
-    var cMarks: Int {
-        didSet{
-            switch self.cMarks {
-                case 94...100:
-                    self.cGPA = 4.0
-                case 87...93:
-                    self.cGPA = 3.7
-                case 80...86:
-                    self.cGPA = 3.5
-                case 77...79:
-                    self.cGPA = 3.2
-                case 73...76:
-                    self.cGPA = 3.0
-                case 70...72:
-                    self.cGPA = 2.7
-                case 67...69:
-                    self.cGPA = 2.3
-                case 63...66:
-                    self.cGPA = 2.0
-                case 60...62:
-                    self.cGPA = 1.7
-                case 50...59:
-                    self.cGPA = 1.0
-                case 0...49:
-                    self.cGPA = 0.0
-                default:
-                    self.cGPA = 0.0
-            }
+    init(cName: String, cMarks: Int) {
+        self.cName = cName
+        self.cMarks = cMarks
+        
+        credit = (self.cName.isEmpty ? 1 : Int(cName.dropFirst(self.cName.count - 1)))
+        
         }
-    }
-    var credit: Int?
-    var cGPA: Float?
 }

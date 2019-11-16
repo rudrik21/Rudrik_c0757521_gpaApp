@@ -8,19 +8,38 @@
 
 import Foundation
 
-struct Student{
+struct Student : CustomStringConvertible {
     var firstName : String
     var lastName : String 
     var studentID : String
-    var CGPA: Float = 0.0
     
-    static var students: [Student] = [Student(firstName: "Rudrik", lastName: "Panchal", studentID: "123")]
-    var semesters: [Semester] = []
+    static var students: [Student] = []
+    var semesters: [Semester]?
     
-    static func shouldAdd(studentID: String) -> Bool {
-        //  returns true if 'not empty'
-        return Student.students.filter { (s) -> Bool in
-            s.studentID == studentID
-        }.isEmpty
+    var CGPA: Float?{
+        var totalCGPA: Float = 0.0
+        semesters!.forEach { (s) in
+            totalCGPA += s.GPA
+        }
+        return Float(String(format: "%.2f", (totalCGPA / Float(semesters!.count))))
+    }
+    
+    var index : Int {
+        return Student.students.firstIndex { (s) -> Bool in
+            s.studentID == self.studentID
+        }!
+    }
+    
+    var description: String{
+        var res = ""
+        res += firstName + "\n"
+        res += lastName + "\n"
+        res += studentID + "\n"
+        res += String(CGPA!) + "\n"
+        res += String(semesters!.count)
+        semesters!.forEach { (s) in
+            res += String(s.GPA) + "\n"
+        }
+        return res
     }
 }
