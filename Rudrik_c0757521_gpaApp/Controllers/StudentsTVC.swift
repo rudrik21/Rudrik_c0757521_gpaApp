@@ -20,27 +20,23 @@ class StudentsTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    //  MARK:   INITIALIZERS
     func start() {
         students = Student.students
         searchBar.delegate = self
         self.tableView.becomeFirstResponder()
-        
+        self.tableView.keyboardDismissMode = .onDrag
+        navigationController?.navigationBar.backItem?.setValue(UIColor.green, forKey: "titleTextColor")
         updateData()
     }
     
+    //  MARK:   Reloads data
     func updateData() {
+        searchBar.text = nil
         students = Student.students
         self.tableView.reloadData()
-        students.forEach { (s) in
-            print(s)
-        }
     }
     
     // MARK: - Navigation
@@ -133,5 +129,12 @@ extension StudentsTVC : UISearchBarDelegate {
             students = Student.students
         }
         tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData()
+        view.resignFirstResponder()
+        searchBar.text = nil
+        view.endEditing(true)
     }
 }

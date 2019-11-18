@@ -15,10 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Student" id="ps3-Xq-kjp">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Student" showsCancelButton="YES" id="ps3-Xq-kjp">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Xe0-Bt-oYM" detailTextLabel="h6U-Jg-SiB" style="IBUITableViewCellStyleValue1" id="ahh-X9-oPu">
@@ -57,6 +57,7 @@
                     <navigationItem key="navigationItem" title="Student's Names" id="1Fm-Uu-BFK">
                         <barButtonItem key="backBarButtonItem" title="Students" id="T1V-lQ-7pe"/>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="8Gz-cC-ZfC">
+                            <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="N1H-bg-ENB" kind="show" id="AcH-7d-1nB"/>
                             </connections>
@@ -137,7 +138,10 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JV-z8-5hr">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="44.666666666666664"/>
-                                                <state key="normal" title="Save"/>
+                                                <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="onSaveStudent:" destination="N1H-bg-ENB" eventType="touchUpInside" id="NxK-RC-RJH"/>
                                                 </connections>
@@ -223,7 +227,9 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eid-4B-tib">
                                                 <rect key="frame" x="199" y="0.0" width="199" height="75"/>
-                                                <state key="normal" title="Calculate"/>
+                                                <state key="normal" title="Calculate">
+                                                    <color key="titleColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="onCalculateGPA:" destination="2iT-Ro-RX2" eventType="touchUpInside" id="el3-XM-NE0"/>
                                                 </connections>
@@ -243,7 +249,7 @@
                                                 <rect key="frame" x="203" y="0.0" width="195" height="75.333333333333329"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="txtC1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -260,7 +266,7 @@
                                                 <rect key="frame" x="203" y="0.0" width="195" height="75"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="txtC2"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -277,7 +283,7 @@
                                                 <rect key="frame" x="203" y="0.0" width="195" height="75.333333333333329"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="txtC3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -294,7 +300,7 @@
                                                 <rect key="frame" x="203" y="0.0" width="195" height="75"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="txtC4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -311,7 +317,7 @@
                                                 <rect key="frame" x="203" y="0.0" width="195" height="75.333333333333329"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="txtC5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -320,9 +326,9 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlC-TD-z5V">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
-                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.76940028073931643" green="0.98576389563265188" blue="0.83657688280953302" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>

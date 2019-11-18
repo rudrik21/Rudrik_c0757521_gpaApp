@@ -32,11 +32,20 @@ class GPACalculatorVC: UIViewController {
         start()
     }
     
+    //  MARK: Initializer
     func start() {
         segSems.selectedSegmentIndex = 0
         onSemChange(segSems)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
+    //  Hide the keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    //  On Semester change
     @IBAction func onSemChange(_ sender: UISegmentedControl) {
 //        print(sender.selectedSegmentIndex)
         if audio != nil{
@@ -69,10 +78,12 @@ class GPACalculatorVC: UIViewController {
         }
     }
     
+    //  MARK:   initializes data
     func loadData() {
         setFields(courses: (semester!.courses!))
     }
     
+    //  MARK:   Fills data into textFields
     func setFields(courses: [Course]) {
         print(courses)
         for (i, c) in courses.enumerated() {
@@ -82,6 +93,7 @@ class GPACalculatorVC: UIViewController {
         lblGPA.text = (semester?.GPA == 0.0 ? "ex. 3/4" : String(semester!.GPA))
     }
     
+    //  MARK: checks entered data
     func checkFields() -> Bool {
         if !txtCourses.filter({ (txt) -> Bool in
             txt.text!.isEmpty
@@ -93,12 +105,15 @@ class GPACalculatorVC: UIViewController {
         return false
     }
     
+    //  MARK:   On calculate GPA
     @IBAction func onCalculateGPA(_ sender: UIButton) {
         if checkFields(){
             setData()
+            dismissKeyboard()
         }
     }
     
+    //  MARK:   sets fields with student's data
     func setData() {
         for i in 0..<txtCourses.count {
             semester?.courses![i].cMarks = Int(String(txtCourses[i].text!))!
@@ -115,6 +130,7 @@ class GPACalculatorVC: UIViewController {
         Student.students[student!.index].semesters![semester!.index] = semester!
     }
     
+    //  MARK: Return to parent view
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.updateData()
     }

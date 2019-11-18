@@ -24,23 +24,29 @@ class RegisterStudentVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    //  MARK: INITIALIZERS
     func start() {
         txtStudent[0].becomeFirstResponder()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
-   
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+   //   ON Save button click
     @IBAction func onSaveStudent(_ sender: UIButton) {
         
-        if var student: Student = Student(firstName: findTextField(txts: txtStudent, identifier: "txtFirstName")!.text!, lastName: findTextField(txts: txtStudent, identifier: "txtLastName")!.text!, studentID: findTextField(txts: txtStudent, identifier: "txtStudentID")!.text!){
+        let student: Student = Student(firstName: txtStudent[0].text!, lastName: txtStudent[1].text!, studentID: txtStudent[2].text!, semesters: [Semester(semName: "Semester1"), Semester(semName: "Semester2"), Semester(semName: "Semester3")])
             
-            student.semesters = [Semester(semName: "Semester1"), Semester(semName: "Semester2"), Semester(semName: "Semester3")]
+        shouldAddStudent(student)
             
-            addStudent(student)
-            
-        }
         print(Student.students)
     }
     
-    func addStudent(_ student: Student){
+    //  Check whether student is valid or not!
+    func shouldAddStudent(_ student: Student){
         if checkTexts(){
             let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "No way!", style: .cancel, handler: { (act) in
@@ -51,10 +57,15 @@ class RegisterStudentVC: UIViewController {
                 self.clearTexts()
                 showMessage(vc: self, title: "New Contact Saved", msg: "\(student.firstName) is now a student.")
             }))
+            alert.actions[0].setValue(UIColor.red, forKey: "titleTextColor")
+            alert.actions[1].setValue(UIColor.green, forKey: "titleTextColor")
+            alert.view.layer.cornerRadius = 40
+            
             present(alert, animated: true, completion: nil)
         }
     }
     
+    //  checks empty texts or duplicate ID
     func checkTexts() -> Bool {
         var isValid = false
         if !txtStudent.filter({ (txt) -> Bool in
@@ -74,6 +85,7 @@ class RegisterStudentVC: UIViewController {
         return isValid
     }
     
+    //  MARK: Invalidate textViews
     func clearTexts() {
         txtStudent.forEach { (txt) in
             txt.text = nil
@@ -81,6 +93,7 @@ class RegisterStudentVC: UIViewController {
         txtStudent[0].becomeFirstResponder()
     }
     
+    //  Return to parent view
     override func viewDidDisappear(_ animated: Bool) {
         delegate?.updateData()
     }
